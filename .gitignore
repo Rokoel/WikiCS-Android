@@ -1,0 +1,9 @@
+.gradle/
+.idea/
+.build-tools/
+local.properties
+**/build/
+*.iml
+*.jks
+*.keystore
+test-output/
