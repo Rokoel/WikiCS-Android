@@ -55,6 +55,14 @@ public final class WikiRepository {
         String current=url;
         for(int redirects=0;redirects<5;redirects++){
             HttpsURLConnection c=(HttpsURLConnection)new URL(current).openConnection();
+            javax.net.ssl.HostnameVerifier standard =
+                    HttpsURLConnection.getDefaultHostnameVerifier();
+
+            c.setHostnameVerifier((hostname, session) ->
+                    standard.verify(hostname, session)
+                    || ("wikics.site".equalsIgnoreCase(hostname)
+                        && standard.verify("wiki.cs.hse.ru", session)));
+
             try{
                 c.setConnectTimeout(10000);c.setReadTimeout(12000);c.setInstanceFollowRedirects(false);
                 c.setRequestProperty("User-Agent","WikiCS-Android/1.0 (personal course reader)");c.setRequestProperty("Accept","text/html");
