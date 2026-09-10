@@ -3,13 +3,6 @@
 A native, minimal Android reader for [Wiki ФКН](https://wikics.site/Wiki_%D0%A4%D0%9A%D0%9D).
 Choose a program and study year once; the app shows that cell of the wiki's course table.
 
-**Delivery status:** implemented source project. The parser, filtering, URL handling,
-reader generation and snapshot fallback compile and pass 33 local checks against the
-four supplied MHT captures. Android source syntax and resource XML were also checked.
-**An APK build, Android lint, emulator testing and visual device testing have not been
-run:** this environment has no Android SDK and could not retrieve build dependencies.
-No prebuilt APK is included.
-
 ## What the app includes
 
 - Native Android screens with off-white surfaces, violet accents, line icons and dark mode.
@@ -23,15 +16,8 @@ No prebuilt APK is included.
   resources, readable tables that scroll sideways, MathML, and configurable text size.
 - Bookmarks scoped to the selected program and study year. Opened article HTML is cached
   in private app storage. Saved text remains available without a connection.
-- Snapshot-first startup: your homepage, Deep Learning, Stochastic Processes, and the
-  empty Time Series page are bundled as clearly dated snapshots from **10 September 2026**.
 - Background refresh, error states, retry actions, and fallback to the last valid cache.
 - External websites, videos, PDFs and downloads open in the appropriate browser/app.
-
-The shared fifth table column (“майноры и факультативы”) is not assigned to a program/year.
-It therefore stays out of the personal course list. Minors and electives explicitly listed
-inside the selected cell **are** included. Other faculty and master's tables are outside
-this first version's catalog. All links inside a chosen course remain accessible.
 
 ## Build and run
 
