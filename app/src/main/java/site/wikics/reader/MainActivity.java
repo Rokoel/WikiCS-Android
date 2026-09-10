@@ -67,7 +67,21 @@ public final class MainActivity extends Activity {
         LinearLayout bar=u.row();u.padding(bar,16,8,16,8);bar.setBackgroundColor(u.card);
         String[] names={"Курсы","Сохранённое","Настройки"},icons={"book","saved","settings"};
         for(int i=0;i<3;i++){final int target=i;LinearLayout item=u.column();item.setGravity(Gravity.CENTER);u.padding(item,0,8,0,8);if(tab==i)u.surface(item,u.soft,18,false,true);else u.surface(item,Color.TRANSPARENT,18,false,true);
-            item.addView(u.icon(icons[i],tab==i?u.accent:u.muted),new LinearLayout.LayoutParams(u.dp(22),u.dp(22)));u.gap(item,5);item.addView(u.text(names[i],11,tab==i?u.accent:u.muted,true));item.setContentDescription(names[i]);item.setFocusable(true);item.setOnClickListener(v->{hideKeyboard();tab=target;render();});LinearLayout.LayoutParams lp=new LinearLayout.LayoutParams(0,-2,1);lp.setMargins(u.dp(3),0,u.dp(3),0);bar.addView(item,lp);}
+            item.addView(u.icon(icons[i],tab==i?u.accent:u.muted),new LinearLayout.LayoutParams(u.dp(22),u.dp(22)));u.gap(item,5);TextView navLabel=u.text(
+                names[i],
+                11,
+                tab==i ? u.accent : u.muted,
+                true
+            );
+            navLabel.setGravity(Gravity.CENTER);
+            navLabel.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+            item.addView(
+                navLabel,
+                new LinearLayout.LayoutParams(
+                    LinearLayout.LayoutParams.MATCH_PARENT,
+                    LinearLayout.LayoutParams.WRAP_CONTENT
+                )
+            );item.setContentDescription(names[i]);item.setFocusable(true);item.setOnClickListener(v->{hideKeyboard();tab=target;render();});LinearLayout.LayoutParams lp=new LinearLayout.LayoutParams(0,-2,1);lp.setMargins(u.dp(3),0,u.dp(3),0);bar.addView(item,lp);}
         return bar;
     }
     private LinearLayout scrollContent(){ScrollView scroll=new ScrollView(this);scroll.setFillViewport(true);scroll.setClipToPadding(false);LinearLayout inner=u.column();u.padding(inner,24,24,24,32);scroll.addView(inner,new ScrollView.LayoutParams(-1,-2));content.addView(scroll,new LinearLayout.LayoutParams(-1,-1));return inner;}
